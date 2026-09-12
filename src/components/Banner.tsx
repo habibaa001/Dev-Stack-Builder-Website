@@ -10,9 +10,9 @@ const Banner = () => {
         </p>
         <div className="mt-8 flex gap-4">
           <button className="btn bg-linear-to-r from-orange-500 to-pink-500 border-none text-white">
-            Explore Technologies
+            Explore Technologies  
           </button>     
-          <button className="btn btn-outline">
+          <button className="btn btn-outline"> 
             Learn More
           </button>
         </div>
