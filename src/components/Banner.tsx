@@ -1,7 +1,7 @@
 import banner from "../assets/banner-stack.png";
 const Banner = () => {
   return (
-    <div className="min-h-[400px] bg-white my-7 flex justify-center items-center ">
+    <div className="min-h-[500px] max-w-10xl mx-auto px-4 bg-white  flex justify-center items-center ">
       <div className="max-w-2xl mx-auto py-8">
         <h1 className="text-5xl font-bold leading-tight mb-4">Build Your Ideal <br /><span className="bg-linear-to-r from-orange-500 via-pink-600 to-purple-600 bg-clip-text text-transparent">Development Stack</span></h1>
         <p className="mt-5 text-gray-500">

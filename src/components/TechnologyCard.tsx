@@ -1,47 +1,65 @@
-type TechnologyProps = {
-  tech: {
-    id: string;
-    name: string;
-    category: string;
-    description: string;
-    icon: string;
-    rating: number;
-    difficulty: string;
-    badge: string;
-  };
-};
+export interface Technology {
+  id: string;
+  name: string;
+  category: string;
+  description: string;
+  icon: string;
+  rating: number;
+  difficulty: string;
+  badge: string;
+}
 
-const TechnologyCard = ({ tech }: TechnologyProps) => {
+interface Props {
+  technology: Technology;
+  handleAddToStack: (technology: Technology) => void;
+  isAdded: boolean;
+}
+
+const TechnologyCard = ({
+  technology,
+  handleAddToStack,
+  isAdded,
+}: Props) => {
   return (
-    <div className="bg-white border border-gray-100 rounded-2xl p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow">
-      <div className="flex justify-between items-center">
-        <img src={tech.icon} alt={tech.name} className="w-14 h-14" />
+    <div className="card bg-base-100 shadow-md">
+      <div className="card-body">
 
-        <div className="badge badge-accent border-none bg-emerald-50 text-emerald-600">
-          {tech.badge}
+        <img
+          src={technology.icon}
+          alt={technology.name}
+          className="w-12 h-12"
+        />
+        <div className="badge bg-emerald-50 text-emerald-600 border-emerald-500">
+          {technology.badge}
         </div>
+
+        <h2 className="card-title">
+          {technology.name}
+        </h2>
+
+        <p>{technology.description}</p>
+
+        <div className="flex justify-between text-sm">
+          <span>{technology.category}</span>
+          <span>{technology.difficulty}</span>
+          <span>⭐ {technology.rating}</span>
+        </div>
+
+        <div className="text-sm">
+          
+        </div>
+
+        <button
+          onClick={() => handleAddToStack(technology)}
+          disabled={isAdded}
+          className="btn bg-stone-950 mt-3 text-white rounded-2xl"
+        >
+          {isAdded
+            ? "✓ Added to Stack"
+            : "Add To Stack"}
+        </button>
+
       </div>
-
-      <h2 className="text-2xl font-bold mt-4">{tech.name}</h2>
-
-      <p className="text-gray-500 mt-2">{tech.description}</p>
-
-      <div className="flex gap-2 mt-4">
-        <div className="bg-slate-100 text-slate-600 rounded-lg px-3 py-1.5">
-          {tech.category}
-        </div>
-
-        <div className="text-slate-500 font-medium px-3 py-1.5">
-          {tech.difficulty}
-        </div>
-        <span className="text-black flex items-center gap-1 font-bold text-slate-900 ">
-          ⭐ {tech.rating}
-        </span>
-      </div>
-
-      <button className="btn btn-block bg-[#090D16] hover:bg-slate-800 text-white border-none rounded-xl mt-4">
-        Add to Stack
-      </button>
     </div>
   );
 };

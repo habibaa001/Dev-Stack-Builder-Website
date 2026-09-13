@@ -1,38 +1,89 @@
+import { useEffect, useState } from "react";
 import Nav from "./components/Nav";
 import Banner from "./components/Banner";
-import { useEffect, useState } from "react";
+import StackSidebar from "./components/StackSidebar";
 import TechnologyCard from "./components/TechnologyCard";
-
+import type { Technology } from "./components/TechnologyCard";
 function App() {
-  const[technologies, setTechnologies] = useState([]);
+  const [technologies, setTechnologies] = useState<Technology[]>([]);
+
+  const [stack, setStack] = useState<Technology[]>([]);
+
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch("/technologies.json")
-      .then((response) => response.json())
-      .then((data) => setTechnologies(data))
-      .catch((error) => console.error("Error fetching technologies:", error));
+      .then((res) => res.json())
+      .then((data: Technology[]) => {
+        setTechnologies(data);
+        setLoading(false);
+      });
   }, []);
+
+  const handleAddToStack = (technology: Technology) => {
+    const exists = stack.find((item) => item.id === technology.id);
+
+    if (exists) {
+      alert("Already Added");
+      return;
+    }
+
+    setStack([...stack, technology]);
+  };
+
+  const handleRemove = (id: string) => {
+    const remaining = stack.filter((item) => item.id !== id);
+
+    setStack(remaining);
+  };
+
+  const handleRemoveAll = () => {
+    setStack([]);
+  };
 
   return (
     <>
-    <Nav />
-    <Banner />
-    <div className="container mx-auto justify-center items-center">
-      <h2 className="text-3xl font-bold mb-6 ">
-        Explore the <span className="bg-linear-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">Technologies</span>
-      </h2>
+      <Nav />
+      <main >
+        <Banner />
+        <div className="max-w-7xl items-center mx-auto px-4 py-10">
+          <div className="mb-8 ">
+            <h2 className="text-4xl font-bold">
+              Explore the{" "}
+              <span className="bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">
+                Technologies
+              </span>
+            </h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full">
-        {technologies.map((tech: any) => (
-          <TechnologyCard
-            key={tech.id}
-            tech={tech}
-          />
-        ))}
-      </div>
-    </div>
+            <p className="text-gray-500 mt-2">
+              Pick one technology per category to build your ideal stack.
+            </p>
+          </div>
+
+          <div className="grid lg:grid-cols-4 gap-6">
+            <div className="lg:col-span-3">
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+                {technologies.map((tech) => (
+                  <TechnologyCard
+                    key={tech.id}
+                    technology={tech}
+                    handleAddToStack={handleAddToStack}
+                    isAdded={stack.some((item) => item.id === tech.id)}
+                  />
+                ))}
+              </div>
+            </div>
+
+            <StackSidebar
+              stack={stack}
+              handleRemove={handleRemove}
+              handleRemoveAll={handleRemoveAll}
+            />
+          </div>
+        </div>
+      </main>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
