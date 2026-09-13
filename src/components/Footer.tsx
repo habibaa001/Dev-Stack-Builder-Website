@@ -2,8 +2,8 @@ import Logo from "../assets/logo-text.png";
 
 const Footer = () => {
   return (
-    <footer className="bg-base-200 mt-20">
-      <div className="container mx-auto py-12 grid md:grid-cols-4 gap-8">
+    <footer className="bg-white px-4 py-10">
+      <div className="container mx-auto py-12 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         <div>
           <img src={Logo} alt="Dev Stack Logo" className="h-10" />
           <p className="mt-3 text-gray-500">
