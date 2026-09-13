@@ -4,6 +4,10 @@ import Banner from "./components/Banner";
 import StackSidebar from "./components/StackSidebar";
 import TechnologyCard from "./components/TechnologyCard";
 import type { Technology } from "./components/TechnologyCard";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import Footer from "./components/Footer";
+
 function App() {
   const [technologies, setTechnologies] = useState<Technology[]>([]);
 
@@ -22,19 +26,18 @@ function App() {
 
   const handleAddToStack = (technology: Technology) => {
     const exists = stack.find((item) => item.id === technology.id);
-
     if (exists) {
-      alert("Already Added");
+      toast.warning("Already Added");
       return;
     }
-
-    setStack([...stack, technology]);
+    setStack((prev) => [...prev, technology]);
+    toast.success("Added To Stack");
   };
 
   const handleRemove = (id: string) => {
     const remaining = stack.filter((item) => item.id !== id);
-
     setStack(remaining);
+    toast.info("Technology removed");
   };
 
   const handleRemoveAll = () => {
@@ -44,7 +47,7 @@ function App() {
   return (
     <>
       <Nav />
-      <main >
+      <main>
         <Banner />
         <div className="max-w-7xl items-center mx-auto px-4 py-10">
           <div className="mb-8 ">
@@ -81,7 +84,9 @@ function App() {
             />
           </div>
         </div>
+        <ToastContainer />
       </main>
+      <footer><Footer /></footer>
     </>
   );
 }

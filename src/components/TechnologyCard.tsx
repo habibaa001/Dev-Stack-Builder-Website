@@ -15,15 +15,10 @@ interface Props {
   isAdded: boolean;
 }
 
-const TechnologyCard = ({
-  technology,
-  handleAddToStack,
-  isAdded,
-}: Props) => {
+const TechnologyCard = ({ technology, handleAddToStack, isAdded }: Props) => {
   return (
     <div className="card bg-base-100 shadow-md">
       <div className="card-body">
-
         <img
           src={technology.icon}
           alt={technology.name}
@@ -33,32 +28,27 @@ const TechnologyCard = ({
           {technology.badge}
         </div>
 
-        <h2 className="card-title">
-          {technology.name}
-        </h2>
+        <h2 className="card-title">{technology.name}</h2>
 
         <p>{technology.description}</p>
 
         <div className="flex justify-between text-sm">
-          <span>{technology.category}</span>
+          <span className="badge bg-gray-200">{technology.category}</span>
           <span>{technology.difficulty}</span>
           <span>⭐ {technology.rating}</span>
         </div>
 
-        <div className="text-sm">
-          
-        </div>
+        <div className="text-sm"></div>
 
         <button
           onClick={() => handleAddToStack(technology)}
           disabled={isAdded}
-          className="btn bg-stone-950 mt-3 text-white rounded-2xl"
+          className={`btn mt-4 w-full ${
+            isAdded ? "btn-success" : "btn bg-black text-white hover:bg-stone-700"
+          }`}
         >
-          {isAdded
-            ? "✓ Added to Stack"
-            : "Add To Stack"}
+          {isAdded ? "✓ Added to Stack" : "Add To Stack"}
         </button>
-
       </div>
     </div>
   );

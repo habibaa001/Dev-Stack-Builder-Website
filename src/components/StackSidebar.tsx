@@ -1,4 +1,6 @@
-import type { Technology } from "../components/TechnologyCard";interface Props {
+import type { Technology } from "../components/TechnologyCard";
+
+interface Props {
   stack: Technology[];
   handleRemove: (id: string) => void;
   handleRemoveAll: () => void;
@@ -12,13 +14,9 @@ const StackSidebar = ({
   return (
     <div className="border p-4 rounded-lg">
 
-      <h2 className="font-bold text-xl">
-        Your Stack
-      </h2>
+      <h2 className="font-bold text-xl">Your Stack</h2>
 
-      <p>
-        {stack.length} Technology Selected
-      </p>
+      <p>{stack.length} Technology Selected</p>
 
       {stack.length === 0 && (
         <p className="mt-5 text-gray-500">
