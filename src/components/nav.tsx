@@ -6,7 +6,7 @@ const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="bg-white shadow-sm">
+    <nav className="bg-white sticky top-0 z-50  shadow-sm">
       <div className="container mx-auto px-4">
 
         <div className="md:hidden h-20 grid grid-cols-[1fr_auto_1fr] items-center">
@@ -41,6 +41,7 @@ const Nav = () => {
             <div className="flex flex-col gap-4">
               <a href="#" className="text-gray-700">Home</a>
               <a href="#" className="text-gray-700">Technologies</a>
+              <a href="#" className="text-gray-700">Projects</a>
               <a href="#" className="text-gray-700">About</a>
               <a href="#" className="text-gray-700">Contact</a>
             </div>
@@ -63,6 +64,9 @@ const Nav = () => {
               Technologies
             </a>
             <a href="#" className="text-gray-700 ">
+              Projects
+            </a>
+            <a href="#" className="text-gray-700 ">
               About
             </a>
             <a href="#" className="text-gray-700 ">
@@ -79,6 +83,7 @@ const Nav = () => {
               Sign Up
             </button>
           </div>
+          
         </div>
 
       </div>

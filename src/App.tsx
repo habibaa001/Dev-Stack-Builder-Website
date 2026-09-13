@@ -59,7 +59,7 @@ function App() {
           <div className="mb-8">
             <h2 className="text-4xl font-bold">
               Explore the{" "}
-              <span className="bg-gradient-to-r from-pink-500 to-purple-600 bg-clip-text text-transparent">
+              <span className="bg-gradient-to-r from-pink-500 to-purple-500 bg-clip-text text-transparent">
                 Technologies
               </span>
             </h2>
