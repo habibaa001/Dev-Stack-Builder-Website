@@ -49,7 +49,7 @@ function App() {
       <Nav />
       <main>
         <Banner />
-        <div className="max-w-7xl items-center mx-auto px-4 py-10">
+        <div className="container mx-auto py-4 bg-white">
           <div className="mb-8 ">
             <h2 className="text-4xl font-bold">
               Explore the{" "}

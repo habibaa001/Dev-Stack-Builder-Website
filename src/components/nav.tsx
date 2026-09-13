@@ -5,7 +5,7 @@ const Nav = () => {
     <nav className=" bg-white shadow-md">
       <div className="container mx-auto flex justify-between py-4 bg-white">
         <img src={Logo} alt="Logo" />
-        <ul className="flex gap-6 items-center">
+        <ul className="flex gap-6 items-center text-gray-600">
           <li>Home</li>
           <li>Technologies</li>
           <li>Projects</li>

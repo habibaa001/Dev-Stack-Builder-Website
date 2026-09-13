@@ -3,7 +3,7 @@ import Logo from "../assets/logo-text.png";
 const Footer = () => {
   return (
     <footer className="bg-base-200 mt-20">
-      <div className="max-w-7xl mx-auto px-4 py-12 grid md:grid-cols-4 gap-8">
+      <div className="container mx-auto py-12 grid md:grid-cols-4 gap-8">
         <div>
           <img src={Logo} alt="Dev Stack Logo" className="h-10" />
           <p className="mt-3 text-gray-500">
