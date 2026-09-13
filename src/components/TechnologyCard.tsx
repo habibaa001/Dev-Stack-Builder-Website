@@ -19,13 +19,15 @@ const TechnologyCard = ({ technology, handleAddToStack, isAdded }: Props) => {
   return (
     <div className="card bg-base-100 shadow-md">
       <div className="card-body">
-        <img
+        <div>
+          <span className="badge bg-emerald-50 text-emerald-600 border-emerald-500 absolute top-8 right-3 px-3 py-1">
+            {technology.badge}</span>
+          <img
           src={technology.icon}
           alt={technology.name}
           className="w-12 h-12"
-        />
-        <div className="badge bg-emerald-50 text-emerald-600 border-emerald-500">
-          {technology.badge}
+          />
+          
         </div>
 
         <h2 className="card-title">{technology.name}</h2>
